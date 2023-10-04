@@ -11,8 +11,8 @@ services:
       - POSTGRES_DB=rinhadb
     ports:
       - "5432:5432"
-    #volumes:
-    #  - ./ddl.sql:/docker-entrypoint-initdb.d/ddl.sql
+    volumes:
+      - ./ddl-rinha:/docker-entrypoint-initdb.d/ddl-rinha.sql
     deploy:
       resources:
         limits:

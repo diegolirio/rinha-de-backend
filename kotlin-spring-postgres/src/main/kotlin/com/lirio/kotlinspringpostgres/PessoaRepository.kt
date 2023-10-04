@@ -14,7 +14,11 @@ interface PessoaRepository : JpaRepository<Pessoa, UUID>, JpaSpecificationExecut
 
     @Query(
         nativeQuery = true,
-        value = "Select * from pessoas where apelido like %:t% or nome like %:t% or stack like %:t% limit 50"
+        value = "Select * from pessoas " +
+                "where apelido like %:t% " +
+                "   or nome like %:t% " +
+                "   or stack like %:t% " +
+                "limit 50"
         //value = "SELECT * FROM pessoa e WHERE :t IS NULL OR :t = '' OR EXISTS (SELECT 1 FROM unnest(e.stack) s WHERE LOWER(s) LIKE LOWER(CONCAT('%', :t, '%')))"
     )
     fun findBy(@Param("t") t: String): Iterable<Pessoa>
